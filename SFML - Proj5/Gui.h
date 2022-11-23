@@ -5,9 +5,52 @@ enum button_states { BTN_IDLE = 0, BTN_HOVER, BTN_ACTIVE };
 namespace gui
 {
 	/*##################################################################*/
+	/*############################## TEXT ##############################*/
+	/*##################################################################*/
+	class Text
+	{
+	protected:
+		// #### Variables #### //
+		sf::RectangleShape shape;
+		sf::Font* font;
+		sf::Text text;
+
+		sf::Color textIdleColor;
+
+		sf::Color idleColor;
+
+		sf::Color outlineIdleColor;
+		// #### Variables #### //
+	public:
+		// #### Constructor | Destructor #### //
+		Text(float x, float y, float width, float height,
+			sf::Font* font, std::string text, unsigned characterSize,
+			sf::Color textIdleColor, sf::Color idleColor,
+			sf::Color outlineIdleColor = sf::Color::Transparent);		// Class constructor
+		~Text();				// Class destructor
+		// #### Constructor | Destructor #### //
+
+		// #### Accessors #### //
+		const std::string getText() const;
+		// #### Accessors #### //
+
+		// #### Modifiers #### //
+		void setText(const std::string text);
+		// #### Modifiers #### //
+
+		// #### Functions #### //
+		void render(sf::RenderTarget& target);
+		// #### Functions #### //
+	};
+	/*##################################################################*/
+	/*############################## TEXT ##############################*/
+	/*##################################################################*/
+
+	/*##################################################################*/
 	/*############################# BUTTON #############################*/
 	/*##################################################################*/
 	class Button
+		: public Text
 	{
 	protected:
 		// #### Variables #### //
@@ -17,19 +60,12 @@ namespace gui
 		short unsigned buttonState;
 		short unsigned id;
 
-		sf::RectangleShape shape;
-		sf::Font* font;
-		sf::Text text;
-
-		sf::Color textIdleColor;
 		sf::Color textHoverColor;
 		sf::Color textActiveColor;
 
-		sf::Color idleColor;
 		sf::Color hoverColor;
 		sf::Color activeColor;
 
-		sf::Color outlineIdleColor;
 		sf::Color outlineHoverColor;
 		sf::Color outlineActiveColor;
 		// #### Variables #### //
@@ -49,19 +85,16 @@ namespace gui
 		// #### Accessors #### //
 		const bool getKeyTime();
 		const bool isPressed() const;
-		const std::string getText() const;
 		const short unsigned& getId() const;
 		// #### Accessors #### //
 
 		// #### Modifiers #### //
 		void updateKeyTime(const float& dt);
 		void setId(const short unsigned id);
-		void setText(const std::string text);
 		// #### Modifiers #### //
 
 		// #### Functions #### //
 		void update(const sf::Vector2f& mousePos, const float& dt);	// Update booleans for hover and pressed
-		void render(sf::RenderTarget& target);
 		// #### Functions #### //
 	};
 	/*##################################################################*/

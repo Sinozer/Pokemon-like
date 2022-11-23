@@ -12,6 +12,7 @@ protected:
 	sf::RectangleShape backGround;
 	sf::Font font;
 
+	std::map<std::string, gui::Text*> texts;
 	std::map<std::string, gui::Button*> buttons;
 	std::map<std::string, gui::CheckBox*> checkBoxes;
 	std::map<std::string, gui::DropDownList*> dropDownLists;

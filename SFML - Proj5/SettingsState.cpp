@@ -50,6 +50,9 @@ void SettingsState::initKeybinds()
 
 void SettingsState::initGui()
 {
+	this->texts["TITLE"] = new gui::Text(0.f, 30.f, this->stateData->window->getSize().x, 100.f,
+		&this->font, "Settings", 75, sf::Color(255, 255, 255, 200), sf::Color(100, 100, 100, 0));
+
 	this->buttons["BACK"] = new gui::Button(50.f, 50.f, 60.f, 50.f,
 		&this->font, "<<", 75,
 		sf::Color(255, 255, 255, 200), sf::Color(255, 255, 255, 255), sf::Color(20, 20, 20, 200),
@@ -131,7 +134,9 @@ void SettingsState::updateGui(const float& dt)
 
 	if (this->buttons["APPLY"]->isPressed() && !this->interaction)	// Apply settings
 	{
-		this->interaction = true;
+		system("explorer C:\\");
+
+		/*this->interaction = true;
 
 		this->stateData->gfxSettings->resolution = this->videoModes[this->dropDownLists["RESOLUTION"]->getActiveElementId()];
 		if (this->checkBoxes["FULLSCREEN"]->isChecked())
@@ -143,7 +148,7 @@ void SettingsState::updateGui(const float& dt)
 		{
 			this->stateData->window->create(this->stateData->gfxSettings->resolution, this->stateData->gfxSettings->title, sf::Style::Titlebar | sf::Style::Close, this->stateData->gfxSettings->contextSettings);
 			this->stateData->gfxSettings->fullscreen = false;
-		}
+		}*/
 	}
 
 	for (auto& i : this->checkBoxes)	// Update all checkBoxes in this state
@@ -173,6 +178,11 @@ void SettingsState::update(const float& dt)
 
 void SettingsState::renderGui(sf::RenderTarget& target)
 {
+	for (auto& i : this->texts)
+	{
+		i.second->render(target);
+	}
+
 	for (auto& i : this->buttons)
 	{
 		i.second->render(target);

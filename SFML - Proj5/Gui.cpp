@@ -2,23 +2,14 @@
 #include "Gui.h"
 
 /*##################################################################*/
-/*############################# BUTTON #############################*/
+/*############################## TEXT ##############################*/
 /*##################################################################*/
 
 // #### Constructor | Destructor #### //
-gui::Button::Button(float x, float y, float width, float height,
+gui::Text::Text(float x, float y, float width, float height,
 	sf::Font* font, std::string text, unsigned characterSize,
-	sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
-	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor,
-	sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor,
-	short unsigned id)
+	sf::Color textIdleColor, sf::Color idleColor, sf::Color outlineIdleColor)
 {
-	this->keyTimeMax = 1.f;
-	this->keyTime = 0.f;
-
-	this->buttonState = BTN_IDLE;
-	this->id = id;
-
 	this->shape.setPosition(sf::Vector2f(x, y));
 	this->shape.setSize(sf::Vector2f(width, height));
 	this->shape.setFillColor(idleColor);
@@ -37,14 +28,67 @@ gui::Button::Button(float x, float y, float width, float height,
 	);
 
 	this->textIdleColor = textIdleColor;
+
+	this->idleColor = idleColor;
+
+	this->outlineIdleColor = outlineIdleColor;
+}
+
+gui::Text::~Text()
+{
+
+}
+// #### Constructor | Destructor #### //
+
+// #### Accessors #### //
+const std::string gui::Text::getText() const
+{
+	return this->text.getString();
+}
+
+void gui::Text::setText(const std::string text)
+{
+	this->text.setString(text);
+}
+// #### Modifiers #### //
+
+// #### Functions #### //
+void gui::Text::render(sf::RenderTarget& target)
+{
+	target.draw(this->shape);
+	target.draw(this->text);
+}
+// #### Functions #### //
+
+/*##################################################################*/
+/*############################## TEXT ##############################*/
+/*##################################################################*/
+
+/*##################################################################*/
+/*############################# BUTTON #############################*/
+/*##################################################################*/
+
+// #### Constructor | Destructor #### //
+gui::Button::Button(float x, float y, float width, float height,
+	sf::Font* font, std::string text, unsigned characterSize,
+	sf::Color textIdleColor, sf::Color textHoverColor, sf::Color textActiveColor,
+	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor,
+	sf::Color outlineIdleColor, sf::Color outlineHoverColor, sf::Color outlineActiveColor,
+	short unsigned id)
+	:	Text(x, y, width, height, font, text, characterSize, textIdleColor, idleColor, outlineIdleColor)
+{
+	this->keyTimeMax = 1.f;
+	this->keyTime = 0.f;
+
+	this->buttonState = BTN_IDLE;
+	this->id = id;
+
 	this->textHoverColor = textHoverColor;
 	this->textActiveColor = textActiveColor;
 
-	this->idleColor = idleColor;
 	this->hoverColor = hoverColor;
 	this->activeColor = activeColor;
 
-	this->outlineIdleColor = outlineIdleColor;
 	this->outlineHoverColor = outlineHoverColor;
 	this->outlineActiveColor = outlineActiveColor;
 }
@@ -73,11 +117,6 @@ const bool gui::Button::isPressed() const
 	return false;
 }
 
-const std::string gui::Button::getText() const
-{
-	return this->text.getString();
-}
-
 const short unsigned& gui::Button::getId() const
 {
 	return this->id;
@@ -94,11 +133,6 @@ void gui::Button::updateKeyTime(const float& dt)
 void gui::Button::setId(const short unsigned id)
 {
 	this->id = id;
-}
-
-void gui::Button::setText(const std::string text)
-{
-	this->text.setString(text);
 }
 // #### Modifiers #### //
 
@@ -143,12 +177,6 @@ void gui::Button::update(const sf::Vector2f& mousePos, const float& dt)
 		this->shape.setOutlineColor(sf::Color::Green);
 		break;
 	}
-}
-
-void gui::Button::render(sf::RenderTarget& target)
-{
-	target.draw(this->shape);
-	target.draw(this->text);
 }
 // #### Functions #### //
 
