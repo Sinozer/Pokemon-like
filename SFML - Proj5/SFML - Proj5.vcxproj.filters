@@ -16,38 +16,8 @@
     <Filter Include="Fichiers sources\Game">
       <UniqueIdentifier>{32601e18-b5be-4255-9775-315319dd1f9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game\States">
-      <UniqueIdentifier>{433d86c6-f186-4e7d-850b-a6cf613ce4f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\States\Base">
-      <UniqueIdentifier>{ca7d4880-e9e7-4eaa-befc-db48ae51480f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\Entities">
-      <UniqueIdentifier>{05c0ed80-63e0-4838-946d-117dac3a7d93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\Entities\Base">
-      <UniqueIdentifier>{7884fbd6-e6fd-446d-83b8-01e9ca738bbc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Game">
       <UniqueIdentifier>{69c80abc-66e5-46e4-ae61-f7cefeb26781}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entities">
-      <UniqueIdentifier>{9ad545ec-ab1e-4769-8c99-a2fffd4b9d1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entities\Base">
-      <UniqueIdentifier>{32f7abdc-55b1-4451-abcf-c8de4e1d665c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\States">
-      <UniqueIdentifier>{c08a4218-7f1d-4cd9-9ce7-60c4d03760c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\States\Base">
-      <UniqueIdentifier>{48d36e98-0d75-498b-8393-2fa031434679}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entities\Base\Components">
-      <UniqueIdentifier>{05c0bb87-9a72-4a20-93f7-964bcaa48719}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\Entities\Base\Components">
-      <UniqueIdentifier>{e31599c5-2f5e-4343-b28b-3df1a8392e22}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Game\GUI">
       <UniqueIdentifier>{b07ff4e5-31eb-48da-accf-333d2f0b30ba}</UniqueIdentifier>
@@ -55,126 +25,246 @@
     <Filter Include="Fichiers d%27en-tête\Game\GUI">
       <UniqueIdentifier>{63067e66-d6b6-4fe6-b5a0-e8392be9fdbd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="temp">
-      <UniqueIdentifier>{2d774815-5b0f-420e-a8ad-2a35ef255fae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Game\Map">
       <UniqueIdentifier>{2d09de52-a8e6-44bc-b93d-20c59b305700}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Game\Map">
       <UniqueIdentifier>{0e5e4b64-4315-41f4-9246-890c1db219dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Settings">
+    <Filter Include="Fichiers d%27en-tête\Game\State">
+      <UniqueIdentifier>{c08a4218-7f1d-4cd9-9ce7-60c4d03760c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\Base">
+      <UniqueIdentifier>{48d36e98-0d75-498b-8393-2fa031434679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State">
+      <UniqueIdentifier>{433d86c6-f186-4e7d-850b-a6cf613ce4f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\Base">
+      <UniqueIdentifier>{ca7d4880-e9e7-4eaa-befc-db48ae51480f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\Menu">
+      <UniqueIdentifier>{aa152d58-c247-484a-8917-b32ef8386e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\Menu\Base">
+      <UniqueIdentifier>{73cf2f46-d828-4ab4-bb0d-7d0d533f92a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List">
+      <UniqueIdentifier>{b1b6f6ec-de95-4c58-9f82-dc98f4c7bc11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\MainMenu">
+      <UniqueIdentifier>{32223019-5dbb-4a81-8839-e8e6d08e86a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Editor">
+      <UniqueIdentifier>{91c2570b-8d31-4d9e-939d-e609bab1a7e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Editor\Menus">
+      <UniqueIdentifier>{ca54152f-3ea6-40f2-beb3-b42bdf74770b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Game">
+      <UniqueIdentifier>{06d73351-1f6d-4795-ba66-a04dad8d19aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Settings">
+      <UniqueIdentifier>{58592b2c-566e-430e-8118-9233c2509721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List">
+      <UniqueIdentifier>{afb21b39-a185-4b98-b000-81a9c7c0e6d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\MainMenu">
+      <UniqueIdentifier>{d54a134e-7f56-4907-8386-56550fb82afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Game">
+      <UniqueIdentifier>{8cd318a4-bf66-4e0d-b5bc-b25d963e2a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Editor">
+      <UniqueIdentifier>{e84c4d15-4bad-4fce-bba1-fb18073cc220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Settings">
+      <UniqueIdentifier>{bf551541-ba49-4c00-9cae-20ebf216f58d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Editor\Menus">
+      <UniqueIdentifier>{d7bc60cb-2f0f-47e0-b0b7-b298bac37b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\List\Game\Menus">
+      <UniqueIdentifier>{f23bb526-a03a-4e6e-99b7-3e24e23d7f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\Menu">
+      <UniqueIdentifier>{feb61d89-ddbf-4cd4-9dd1-a5a9bc1eae05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\Menu\Base">
+      <UniqueIdentifier>{1b5e3a45-beb7-4520-b2f8-007d424681b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Settings">
       <UniqueIdentifier>{64153185-e86c-4e88-bb1a-648451aedd22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Settings">
+    <Filter Include="Fichiers sources\Game\Entity">
+      <UniqueIdentifier>{05c0ed80-63e0-4838-946d-117dac3a7d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Base">
+      <UniqueIdentifier>{7884fbd6-e6fd-446d-83b8-01e9ca738bbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\List">
+      <UniqueIdentifier>{25532fec-4c54-44e6-b088-7872ea007b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\List\Player">
+      <UniqueIdentifier>{3e14b10d-fdcb-4069-ab14-a708b34cf97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Settings">
       <UniqueIdentifier>{2fe22121-7d98-4ee3-9d52-126c7475f203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity">
+      <UniqueIdentifier>{9ad545ec-ab1e-4769-8c99-a2fffd4b9d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Base">
+      <UniqueIdentifier>{32f7abdc-55b1-4451-abcf-c8de4e1d665c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Base\Components">
+      <UniqueIdentifier>{05c0bb87-9a72-4a20-93f7-964bcaa48719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\List">
+      <UniqueIdentifier>{feab28c2-1beb-4cce-85a6-9b89e9b8ea69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\List\Player">
+      <UniqueIdentifier>{627f2991-c79b-48eb-8e45-13312ba7fad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Base\Components">
+      <UniqueIdentifier>{e31599c5-2f5e-4343-b28b-3df1a8392e22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\List\Game\Menus">
+      <UniqueIdentifier>{535106c5-ac4c-42e9-8cd0-9b394b2f8139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\State\Menu\Manager">
+      <UniqueIdentifier>{1d388bc9-0635-4ae1-859c-c60dfbf10f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\State\Menu\Manager">
+      <UniqueIdentifier>{2b6a818b-2aa1-4a31-ae4b-3159eec711ed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Fichiers sources\Game\States</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenuState.cpp">
-      <Filter>Fichiers sources\Game\States</Filter>
-    </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Fichiers sources\Game\States\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Fichiers sources\Game\Entities\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Fichiers sources\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Gui.cpp">
-      <Filter>Fichiers sources\Game\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Fichiers sources\Game\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Fichiers sources\Game\Entities\Base\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorState.cpp">
-      <Filter>Fichiers sources\Game\States</Filter>
-    </ClCompile>
-    <ClCompile Include="HitboxComponent.cpp">
-      <Filter>Fichiers sources\Game\Entities\Base\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PauseMenu.cpp">
-      <Filter>Fichiers sources\Game\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsState.cpp">
-      <Filter>Fichiers sources\Game\States</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Fichiers sources\Game\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Fichiers sources\Game\Map</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsSettings.cpp">
-      <Filter>Fichiers sources\Settings</Filter>
+    <ClCompile Include="Game\Entity\Components\AnimationComponent.cpp">
+      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Components\HitboxComponent.cpp">
+      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Components\MovementComponent.cpp">
+      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Base\Entity.cpp">
+      <Filter>Fichiers sources\Game\Entity\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\List\Player\Player.cpp">
+      <Filter>Fichiers sources\Game\Entity\List\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GUI\Gui.cpp">
+      <Filter>Fichiers sources\Game\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Tile.cpp">
+      <Filter>Fichiers sources\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\TileMap.cpp">
+      <Filter>Fichiers sources\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Settings\GraphicsSettings.cpp">
+      <Filter>Fichiers sources\Game\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\Base\State.cpp">
+      <Filter>Fichiers sources\Game\State\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Editor\EditorState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Editor\Menus\EditorPauseMenu.cpp">
+      <Filter>Fichiers sources\Game\State\List\Editor\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Game\GameState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Game\Menus\GamePauseMenu.cpp">
+      <Filter>Fichiers sources\Game\State\List\Game\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\MainMenu\MainMenuState.cpp">
+      <Filter>Fichiers sources\Game\State\List\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Settings\SettingsState.cpp">
+      <Filter>Fichiers sources\Game\State\List\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Fichiers sources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\Menu\Base\Menu.cpp">
+      <Filter>Fichiers sources\Game\State\Menu\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\Menu\Manager\MenuManager.cpp">
+      <Filter>Fichiers sources\Game\State\Menu\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameState.h">
-      <Filter>Fichiers d%27en-tête\Game\States</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuState.h">
-      <Filter>Fichiers d%27en-tête\Game\States</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Fichiers d%27en-tête\Game\States\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Fichiers d%27en-tête\Game\Entities\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Fichiers d%27en-tête\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Gui.h">
-      <Filter>Fichiers d%27en-tête\Game\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête\Game\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementComponent.h">
-      <Filter>Fichiers d%27en-tête\Game\Entities\Base\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorState.h">
-      <Filter>Fichiers d%27en-tête\Game\States</Filter>
-    </ClInclude>
-    <ClInclude Include="HitboxComponent.h">
-      <Filter>Fichiers d%27en-tête\Game\Entities\Base\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PauseMenu.h">
-      <Filter>Fichiers d%27en-tête\Game\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsState.h">
-      <Filter>Fichiers d%27en-tête\Game\States</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsSettings.h">
-      <Filter>Fichiers d%27en-tête\Settings</Filter>
+    <ClInclude Include="Game\Entity\Components\AnimationComponent.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Components\HitboxComponent.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Components\MovementComponent.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Base\Entity.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\List\Player\Player.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\List\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GUI\Gui.h">
+      <Filter>Fichiers d%27en-tête\Game\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\TileMap.h">
+      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\Tile.h">
+      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Settings\GraphicsSettings.h">
+      <Filter>Fichiers d%27en-tête\Game\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\Base\State.h">
+      <Filter>Fichiers d%27en-tête\Game\State\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Editor\EditorState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Game\GameState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Editor\Menus\EditorPauseMenu.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Editor\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Game\Menus\GamePauseMenu.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Game\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\MainMenu\MainMenuState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Settings\SettingsState.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\Menu\Base\Menu.h">
+      <Filter>Fichiers d%27en-tête\Game\State\Menu\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\Menu\Manager\MenuManager.h">
+      <Filter>Fichiers d%27en-tête\Game\State\Menu\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
