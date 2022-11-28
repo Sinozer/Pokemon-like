@@ -1,6 +1,25 @@
 #include "stdafx.h"
 #include "TileMap.h"
 
+// #### Init Function #### //
+void TileMap::initTexture()
+{
+	/*sf::Texture* temp = new sf::Texture;
+	if (!temp->loadFromFile("Resources/Images/Tiles/grounds.png"))
+		throw("ERROR::TILEMAP: FAILED TO LOAD IMAGE");
+	this->sheets.push_back(temp);*/
+
+	if (!this->sheets["DECORATIONS"].loadFromFile("Resources/Images/Tiles/decorations.png"))
+		throw("ERROR::TILEMAP: FAILED TO LOAD IMAGE");
+
+	if (!this->sheets["GROUNDS"].loadFromFile("Resources/Images/Tiles/grounds.png"))
+		throw("ERROR::TILEMAP: FAILED TO LOAD IMAGE");
+
+	if (!this->sheets.empty())
+		this->selectedSheet = &sheets.begin()->second;
+}
+// #### Init Function #### //
+
 // #### Constructor | Destructor #### //
 TileMap::TileMap(float gridSize, unsigned width, unsigned height)
 {
@@ -20,6 +39,7 @@ TileMap::TileMap(float gridSize, unsigned width, unsigned height)
 				this->map[x][y].resize(this->layers, nullptr);
 		}
 
+	this->initTexture();
 	if (!this->tileTextureSheet.loadFromFile("Resources/Images/Tiles/grounds.png"/*, sf::IntRect(0, 0, 8*32, 3*32 )*/))
 		throw("ERROR::TILEMAP: FAILED TO LOAD IMAGE");
 }
@@ -34,13 +54,33 @@ TileMap::~TileMap()
 // #### Constructor | Destructor #### //
 
 // #### Accessors #### //
-
+const sf::Texture* TileMap::getTileSheet() const
+{
+	return this->selectedSheet;
+}
 // #### Accessors #### //
 
 // #### Modifiers #### //
+void TileMap::increaseTextureSet()
+{
+	for (auto i = this->sheets.begin(); i != this->sheets.end(); i++)
+		if (&i->second == this->selectedSheet && i.operator!=(--this->sheets.end()))
+		{
+			this->selectedSheet = &((++i)->second);
+			break;
+		}
+}
 
+void TileMap::decreaseTextureSet()
+{
+	for (auto i = this->sheets.begin(); i != this->sheets.end(); i++)
+		if (&i->second == this->selectedSheet && i.operator!=(this->sheets.begin()))
+		{
+			this->selectedSheet = &((--i)->second);
+			break;
+		}
+}
 // #### Modifiers #### //
-
 
 // #### Functions #### //
 void TileMap::addTile(const unsigned x, const unsigned y, const unsigned z, const sf::IntRect& textureRect)
@@ -50,7 +90,7 @@ void TileMap::addTile(const unsigned x, const unsigned y, const unsigned z, cons
 		&& z >= 0 && z < this->layers) // Prevents out of bounds
 	{
 		if (this->map[x][y][z] == nullptr) // Check if tile is empty
-			this->map[x][y][z] = new Tile(x * this->gridSizeF, y * this->gridSizeF, this->gridSizeF, this->tileTextureSheet, textureRect);
+			this->map[x][y][z] = new Tile(x * this->gridSizeF, y * this->gridSizeF, this->gridSizeF, *this->selectedSheet, textureRect);
 	}
 }
 

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/GUI/Gui.h"
+#include "Gui.h"
 
 /*##################################################################*/
 /*############################## TEXT ##############################*/
@@ -253,7 +253,7 @@ gui::DropDownList::DropDownList(float x, float y, float width, float height, sf:
 		sf::Color(255, 255, 255, 200), sf::Color(255, 255, 255, 255), sf::Color(20, 20, 20, 50)
 	);
 
-	for (auto i = 0; i < nbOfElements; i++)
+	for (unsigned int i = 0; i < nbOfElements; i++)
 	{
 		this->list.push_back(
 			new Button(
@@ -341,4 +341,107 @@ void gui::DropDownList::render(sf::RenderTarget& target)
 
 /*##################################################################*/
 /*########################### DROPDOWNLIST #########################*/
+/*##################################################################*/
+
+/*##################################################################*/
+/*########################## SCROLLING VIEW ########################*/
+/*##################################################################*/
+
+// #### Constructor | Destructor #### //
+gui::ScrollingView::ScrollingView(sf::RenderWindow* window, float x, float y, float width, float height, sf::Color containerColor, sf::Color outlineColor)
+{
+	this->view.setViewport(sf::FloatRect(x / window->getSize().x, y / window->getSize().y, width / window->getSize().x, height / window->getSize().y));
+
+	this->view.reset(this->position);
+	this->position = sf::FloatRect(x, y, width, height);
+
+	this->background.setPosition(sf::Vector2f(x, y));
+	this->background.setSize(sf::Vector2f(width, height));
+	this->background.setFillColor(containerColor);
+	this->background.setOutlineThickness(1.f);
+	this->background.setOutlineColor(outlineColor);
+}
+
+gui::ScrollingView::~ScrollingView()
+{
+	if (!this->shapes.empty())
+		for (auto& i : this->shapes)
+			delete i.second;
+
+	if (!this->texts.empty())
+		for (auto& i : this->texts)
+			delete i.second;
+
+	if (!this->buttons.empty())
+		for (auto& i : this->buttons)
+			delete i.second;
+}
+// #### Constructor | Destructor #### //
+
+// #### Modifiers #### //
+
+// #### Modifiers #### //
+
+// #### Accessors #### //
+
+// #### Accessors #### //
+
+// #### Functions #### //
+void gui::ScrollingView::update(const sf::Vector2f& mousePos, const float& dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		this->position.top -= 10;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+			this->position.top -= 20;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		this->position.top += 10;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+			this->position.top += 20;
+	}
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		this->position.top += 10;*/
+
+	if (this->position.top <= this->background.getGlobalBounds().top)
+		this->position.top = this->background.getGlobalBounds().top;
+
+	if (this->shapes["MAIN"])
+		if (this->position.top >= this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y)
+			this->position.top = this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y;
+
+	std::cout << this->shapes["MAIN"]->getTexture()->getSize().y << std::endl;
+}
+
+void gui::ScrollingView::render(sf::RenderTarget& target)
+{
+	target.draw(this->background);
+	target.setView(this->view);
+
+	/* #### Render objects #### */
+	if (!this->shapes.empty())
+		for (auto& i : this->shapes)
+			target.draw(*i.second);
+
+	if (!this->texts.empty())
+		for (auto& i : this->texts)
+			i.second->render(target);
+
+	if (!this->buttons.empty())
+		for (auto& i : this->buttons)
+			i.second->render(target);
+	/* #### Render objects #### */
+
+	if (this->shapes["MAIN"])
+		if (this->position.top >= this->shapes["MAIN"]->getGlobalBounds().height)
+			this->position.top = this->shapes["MAIN"]->getGlobalBounds().height;
+
+	this->view.reset(this->position);
+	target.setView(target.getDefaultView());
+}
+// #### Functions #### //
+
+/*##################################################################*/
+/*########################## SCROLLING VIEW ########################*/
 /*##################################################################*/

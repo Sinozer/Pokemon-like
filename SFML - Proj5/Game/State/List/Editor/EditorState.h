@@ -12,9 +12,10 @@ class EditorState :
 private:
 	// #### Variables #### //
 	sf::Font font;
-
+	sf::Text cursorText;
 	MenuManager* menuManager;
 
+	std::map<std::string, gui::ScrollingView*> scrollingViews;
 	std::map<std::string, gui::Button*> buttons;
 
 	TileMap* tileMap;
@@ -28,6 +29,7 @@ private:
 	void initFonts();
 	void initKeybinds();
 	void initGui();
+	void initScrollingViews();
 	void initButtons();
 	void initTileMap();
 	// #### Init Functions #### //
@@ -41,11 +43,13 @@ public:
 	void updateInput(const float& dt);
 	void updateEditorInput(const float& dt);
 	void updateGui(const float& dt);
+	void updateScrollingViews(const float& dt);
 	void updateButtons(const float& dt);
 	void updateMenu();
 	void update(const float& dt);
 
 	void renderGui(sf::RenderTarget& target);
+	void renderScrollingViews(sf::RenderTarget& target);
 	void renderButtons(sf::RenderTarget& target);
 	void renderTileMap(sf::RenderTarget& target);
 	void renderMenu();

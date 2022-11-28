@@ -12,6 +12,7 @@ public:
 	GraphicsSettings* gfxSettings;
 	std::map<std::string, int>* supportedKeys;
 	std::stack<State*>* states;
+	sf::Event* sfEvent;
 	float* dt;
 	// #### Variables #### //
 

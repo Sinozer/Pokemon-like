@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Game/State/Base/State.h"
+
 enum button_states { BTN_IDLE = 0, BTN_HOVER, BTN_ACTIVE };
 
 namespace gui
@@ -221,5 +223,52 @@ namespace gui
 	};
 	/*##################################################################*/
 	/*###################### TEXT AND BUTTON LINKED ####################*/
+	/*##################################################################*/
+
+	/*##################################################################*/
+	/*########################## SCROLLING VIEW ########################*/
+	/*##################################################################*/
+	class ScrollingView
+	{
+	private:
+		// #### Variables #### //
+		sf::View view;
+		sf::FloatRect position;	// Camera position
+		
+		// #### Variables #### //
+
+		// #### Init function #### //
+		
+		// #### Init function #### //
+	public:
+		// #### Variables #### //
+		sf::RectangleShape background;
+		std::map<std::string, sf::Sprite*> shapes;	// Textures list
+		std::map<std::string, gui::Text*> texts;	// Text list
+		std::map<std::string, gui::Text*> buttons;	// Button list
+		// #### Variables #### //
+
+		// #### Constructor | Destructor #### //
+		ScrollingView(sf::RenderWindow* window,
+			float x, float y, float width, float height,
+			sf::Color containerColor = sf::Color(0, 0, 0, 127), sf::Color outlineColor = sf::Color::Transparent);	// Class constructor
+		~ScrollingView();
+		// #### Constructor | Destructor #### //
+
+		// #### Modifiers #### //
+		
+		// #### Modifiers #### //
+
+		// #### Accessors #### //
+		
+		// #### Accessors #### //
+
+		// #### Functions #### //
+		void update(const sf::Vector2f& mousePos, const float& dt);
+		void render(sf::RenderTarget& target);
+		// #### Functions #### //
+	};
+	/*##################################################################*/
+	/*########################## SCROLLING VIEW ########################*/
 	/*##################################################################*/
 }

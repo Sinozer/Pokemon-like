@@ -5,6 +5,10 @@
 void EditorState::initVariables()
 {
 	this->textureRect = sf::IntRect(0, 0, static_cast<int>(this->stateData->gridSize / 2), static_cast<int>(this->stateData->gridSize / 2));
+
+	this->cursorText.setFont(this->font);
+	this->cursorText.setCharacterSize(22);
+	this->cursorText.setFillColor(sf::Color::White);
 }
 
 void EditorState::initFonts()
@@ -35,13 +39,25 @@ void EditorState::initKeybinds()
 
 void EditorState::initGui()
 {
+	this->selectorRect.setTexture(this->tileMap->getTileSheet());
+	this->selectorRect.setTextureRect(this->textureRect);
 	this->selectorRect.setSize(sf::Vector2f(this->stateData->gridSize, this->stateData->gridSize));
-	this->selectorRect.setFillColor(sf::Color::Transparent);
+	this->selectorRect.setFillColor(sf::Color(255, 255, 255, 127));
 	this->selectorRect.setOutlineThickness(1.f);
 	this->selectorRect.setOutlineColor(sf::Color::Green);
 
+	this->initScrollingViews();
+
 	/* Top bar containing dropdown buttons to change editor states */
 	this->initButtons();
+}
+
+void EditorState::initScrollingViews()
+{
+	this->scrollingViews["TEXTURES_SET"] = new gui::ScrollingView(this->stateData->window, this->stateData->gridSize, this->stateData->gridSize, this->stateData->gridSize * 8, 14 * this->stateData->gridSize, sf::Color(255, 255, 255, 127), sf::Color(255, 255, 255, 255));
+	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"] = new sf::Sprite(*this->tileMap->selectedSheet);
+	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setPosition(this->stateData->gridSize, this->stateData->gridSize);
+	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setScale(2.f, 2.f);
 }
 
 void EditorState::initButtons()
@@ -62,8 +78,8 @@ EditorState::EditorState(StateData* stateData)
 	this->initVariables();
 	this->initFonts();
 	this->initKeybinds();
-	this->initGui();
 	this->initTileMap();
+	this->initGui();
 
 	this->menuManager = new MenuManager(this->stateData);
 }
@@ -101,6 +117,7 @@ void EditorState::updateEditorInput(const float& dt)
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && this->getKeyTime())
+	{
 		if (this->textureRect.left < 256 - 32)
 			this->textureRect.left += 32;
 		else if (this->textureRect.left >= 256 - 32 && this->textureRect.top + this->textureRect.width < 1536 - 32)
@@ -108,22 +125,52 @@ void EditorState::updateEditorInput(const float& dt)
 			this->textureRect.left = 0;
 			this->textureRect.top += 32;
 		}
+		this->selectorRect.setTextureRect(this->textureRect);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->getKeyTime())
+	{
+		this->tileMap->increaseTextureSet();
+		this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setTexture(*this->tileMap->selectedSheet);
+		this->selectorRect.setTexture(this->tileMap->getTileSheet());
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->getKeyTime())
+	{
+		this->tileMap->decreaseTextureSet();
+		this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setTexture(*this->tileMap->selectedSheet);
+		this->selectorRect.setTexture(this->tileMap->getTileSheet());
+	}
 }
 
 void EditorState::updateGui(const float& dt)
 {
+	this->cursorText.setPosition(this->mousePosView.x + 10.f, this->mousePosView.y + 10.f);
+	std::stringstream ss;
+	ss << "X: " << this->mousePosView.x << " " << "Y: " << this->mousePosView.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
+	this->cursorText.setString(ss.str());
+
 	if (this->mousePosGrid.x * this->stateData->gridSize < this->stateData->window->getSize().x
 		&& this->mousePosGrid.y * this->stateData->gridSize < this->stateData->window->getSize().y)
 		this->selectorRect.setPosition(this->mousePosGrid.x * this->stateData->gridSize, this->mousePosGrid.y * this->stateData->gridSize);
+	
+	
 	this->updateButtons(dt);
+	this->updateScrollingViews(dt);
+}
+
+void EditorState::updateScrollingViews(const float& dt)
+{
+	if (!this->scrollingViews.empty())
+		for (auto& i : this->scrollingViews)
+			i.second->update(this->mousePosView, dt);
 }
 
 void EditorState::updateButtons(const float& dt)
 {
-	for (auto& i : this->buttons)	// Update all buttons in this state
-	{
-		i.second->update(this->mousePosView, dt);
-	}
+	if (!this->buttons.empty())
+		for (auto& i : this->buttons)	// Update all buttons in this state
+			i.second->update(this->mousePosView, dt);
 }
 
 void EditorState::updateMenu()
@@ -149,14 +196,21 @@ void EditorState::renderGui(sf::RenderTarget& target)
 {
 	this->renderButtons(target);
 	target.draw(selectorRect);
+	this->renderScrollingViews(target);
+}
+
+void EditorState::renderScrollingViews(sf::RenderTarget& target)
+{
+	if (!this->scrollingViews.empty())
+		for (auto& i : this->scrollingViews)
+			i.second->render(target);
 }
 
 void EditorState::renderButtons(sf::RenderTarget& target)
 {
-	for (auto& i : this->buttons)
-	{
-		i.second->render(target);
-	}
+	if (!this->buttons.empty())
+		for (auto& i : this->buttons)
+			i.second->render(target);
 }
 
 void EditorState::renderTileMap(sf::RenderTarget& target)
@@ -176,19 +230,7 @@ void EditorState::render(sf::RenderTarget* target)
 
 	this->renderTileMap(*target);
 	this->renderGui(*target);
+	target->draw(this->cursorText);
 	this->renderMenu();
-
-	// #### DEBUG #### //
-	sf::Text mouseText;
-	mouseText.setPosition(this->mousePosView.x + 10, this->mousePosView.y + 10);
-	mouseText.setFont(this->font);
-	mouseText.setCharacterSize(22);
-	mouseText.setFillColor(sf::Color::White);
-	std::stringstream ss;
-	ss << "X: " << this->mousePosView.x << " " << "Y: " << this->mousePosView.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
-	mouseText.setString(ss.str());
-
-	target->draw(mouseText);
-	// #### DEBUG #### //
 }
 // #### Functions #### //
