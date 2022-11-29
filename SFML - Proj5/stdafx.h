@@ -7,6 +7,9 @@
 #include <stack>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
+
+#include <json.hpp>
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

@@ -54,7 +54,7 @@ void EditorState::initGui()
 
 void EditorState::initScrollingViews()
 {
-	this->scrollingViews["TEXTURES_SET"] = new gui::ScrollingView(this->stateData->window, this->stateData->gridSize, this->stateData->gridSize, this->stateData->gridSize * 8, 14 * this->stateData->gridSize, sf::Color(255, 255, 255, 127), sf::Color(255, 255, 255, 255));
+	this->scrollingViews["TEXTURES_SET"] = new gui::TextureSelector(this->stateData->window, this->stateData->gridSize, this->stateData->gridSize, this->stateData->gridSize, this->stateData->gridSize * 8, 14 * this->stateData->gridSize, sf::Color(255, 255, 255, 127), sf::Color(255, 255, 255, 255));
 	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"] = new sf::Sprite(*this->tileMap->selectedSheet);
 	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setPosition(this->stateData->gridSize, this->stateData->gridSize);
 	this->scrollingViews["TEXTURES_SET"]->shapes["MAIN"]->setScale(2.f, 2.f);
@@ -145,9 +145,9 @@ void EditorState::updateEditorInput(const float& dt)
 
 void EditorState::updateGui(const float& dt)
 {
-	this->cursorText.setPosition(this->mousePosView.x + 10.f, this->mousePosView.y + 10.f);
+	this->cursorText.setPosition(this->mousePosView.x + 30.f, this->mousePosView.y);
 	std::stringstream ss;
-	ss << "X: " << this->mousePosView.x << " " << "Y: " << this->mousePosView.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
+	ss << "X: " << this->mousePosGrid.x << " " << "Y: " << this->mousePosGrid.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
 	this->cursorText.setString(ss.str());
 
 	if (this->mousePosGrid.x * this->stateData->gridSize < this->stateData->window->getSize().x

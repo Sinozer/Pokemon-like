@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Vclib\SFML-2.5.1\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Vclib\SFML-2.5.1\include;$(ProjectDir);D:\Vclib\nlohmann;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Vclib\SFML-2.5.1\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Vclib\SFML-2.5.1\include;$(ProjectDir);D:\Vclib\nlohmann;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Data\DataManager.cpp" />
     <ClCompile Include="Game\Entity\Base\Entity.cpp" />
     <ClCompile Include="Game\Entity\Components\AnimationComponent.cpp" />
     <ClCompile Include="Game\Entity\Components\HitboxComponent.cpp" />
@@ -169,6 +170,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Data\DataManager.h" />
     <ClInclude Include="Game\Entity\Base\Entity.h" />
     <ClInclude Include="Game\Entity\Components\AnimationComponent.h" />
     <ClInclude Include="Game\Entity\Components\HitboxComponent.h" />

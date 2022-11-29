@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Game.h"
 
+// TO REMOVE
+#include "Game/Data/DataManager.h"
+// TO REMOVE
+
 // #### Init functions #### //
 void Game::initVariables()
 {

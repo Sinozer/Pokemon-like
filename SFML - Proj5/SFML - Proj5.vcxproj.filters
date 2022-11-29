@@ -139,6 +139,12 @@
     <Filter Include="Fichiers d%27en-tête\Game\State\Menu\Manager">
       <UniqueIdentifier>{2b6a818b-2aa1-4a31-ae4b-3159eec711ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Game\Data">
+      <UniqueIdentifier>{6899ba61-7fb6-4d93-9e05-fb2cd9737235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Data">
+      <UniqueIdentifier>{67525b43-aa15-4973-945d-8b8aee6f7a5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -204,6 +210,9 @@
     <ClCompile Include="Game\State\Menu\Manager\MenuManager.cpp">
       <Filter>Fichiers sources\Game\State\Menu\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Data\DataManager.cpp">
+      <Filter>Fichiers sources\Game\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -265,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="Game\State\Menu\Manager\MenuManager.h">
       <Filter>Fichiers d%27en-tête\Game\State\Menu\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Data\DataManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

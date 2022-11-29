@@ -2,10 +2,10 @@
 
 #include "Game/State/Base/State.h"
 
-enum button_states { BTN_IDLE = 0, BTN_HOVER, BTN_ACTIVE };
-
 namespace gui
 {
+	enum states { IDLE = 0, HOVER, ACTIVE };
+
 	/*##################################################################*/
 	/*############################## TEXT ##############################*/
 	/*##################################################################*/
@@ -59,7 +59,7 @@ namespace gui
 		float keyTime;
 		float keyTimeMax;
 
-		short unsigned buttonState;
+		short unsigned state;
 		short unsigned id;
 
 		sf::Color textHoverColor;
@@ -228,7 +228,7 @@ namespace gui
 	/*##################################################################*/
 	/*########################## SCROLLING VIEW ########################*/
 	/*##################################################################*/
-	class ScrollingView
+	class TextureSelector
 	{
 	private:
 		// #### Variables #### //
@@ -242,17 +242,22 @@ namespace gui
 		// #### Init function #### //
 	public:
 		// #### Variables #### //
+		unsigned short state;
+
 		sf::RectangleShape background;
 		std::map<std::string, sf::Sprite*> shapes;	// Textures list
-		std::map<std::string, gui::Text*> texts;	// Text list
-		std::map<std::string, gui::Text*> buttons;	// Button list
+
+		sf::Vector2u mousePosGrid;
+		float gridSize;
+
+		sf::RectangleShape selector;
 		// #### Variables #### //
 
 		// #### Constructor | Destructor #### //
-		ScrollingView(sf::RenderWindow* window,
+		TextureSelector(sf::RenderWindow* window, float gridSize,
 			float x, float y, float width, float height,
 			sf::Color containerColor = sf::Color(0, 0, 0, 127), sf::Color outlineColor = sf::Color::Transparent);	// Class constructor
-		~ScrollingView();
+		~TextureSelector();
 		// #### Constructor | Destructor #### //
 
 		// #### Modifiers #### //
@@ -264,7 +269,10 @@ namespace gui
 		// #### Accessors #### //
 
 		// #### Functions #### //
+		void updateState(const sf::Vector2f& mousePos);
 		void update(const sf::Vector2f& mousePos, const float& dt);
+
+		void renderSelector(sf::RenderTarget& target);
 		void render(sf::RenderTarget& target);
 		// #### Functions #### //
 	};

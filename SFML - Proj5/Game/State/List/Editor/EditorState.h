@@ -15,7 +15,7 @@ private:
 	sf::Text cursorText;
 	MenuManager* menuManager;
 
-	std::map<std::string, gui::ScrollingView*> scrollingViews;
+	std::map<std::string, gui::TextureSelector*> scrollingViews;
 	std::map<std::string, gui::Button*> buttons;
 
 	TileMap* tileMap;

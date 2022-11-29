@@ -80,7 +80,7 @@ gui::Button::Button(float x, float y, float width, float height,
 	this->keyTimeMax = 1.f;
 	this->keyTime = 0.f;
 
-	this->buttonState = BTN_IDLE;
+	this->state = IDLE;
 	this->id = id;
 
 	this->textHoverColor = textHoverColor;
@@ -112,7 +112,7 @@ const bool gui::Button::getKeyTime()
 
 const bool gui::Button::isPressed() const
 {
-	if (this->buttonState == BTN_ACTIVE)
+	if (this->state == ACTIVE)
 		return true;
 	return false;
 }
@@ -142,31 +142,31 @@ void gui::Button::update(const sf::Vector2f& mousePos, const float& dt)
 	this->updateKeyTime(dt);
 
 
-	this->buttonState = BTN_IDLE;	// Idle
+	this->state = IDLE;	// Idle
 
 	if (this->shape.getGlobalBounds().contains(mousePos))	// Hover
 	{
-		this->buttonState = BTN_HOVER;
+		this->state = HOVER;
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeyTime())	// Active
 		{
-			this->buttonState = BTN_ACTIVE;
+			this->state = ACTIVE;
 		}
 	}
 
-	switch (this->buttonState)
+	switch (this->state)
 	{
-	case BTN_IDLE:
+	case IDLE:
 		this->shape.setFillColor(this->containerIdleColor);
 		this->text.setFillColor(this->textIdleColor);
 		this->shape.setOutlineColor(this->outlineIdleColor);
 		break;
-	case BTN_HOVER:
+	case HOVER:
 		this->shape.setFillColor(this->hoverColor);
 		this->text.setFillColor(this->textHoverColor);
 		this->shape.setOutlineColor(this->outlineHoverColor);
 		break;
-	case BTN_ACTIVE:
+	case ACTIVE:
 		this->shape.setFillColor(this->activeColor);
 		this->text.setFillColor(this->textActiveColor);
 		this->shape.setOutlineColor(this->outlineActiveColor);
@@ -348,8 +348,14 @@ void gui::DropDownList::render(sf::RenderTarget& target)
 /*##################################################################*/
 
 // #### Constructor | Destructor #### //
-gui::ScrollingView::ScrollingView(sf::RenderWindow* window, float x, float y, float width, float height, sf::Color containerColor, sf::Color outlineColor)
+gui::TextureSelector::TextureSelector(sf::RenderWindow* window, float gridSize, float x, float y, float width, float height, sf::Color containerColor, sf::Color outlineColor)
 {
+	this->gridSize = gridSize;
+
+	this->selector = sf::RectangleShape(sf::Vector2f(this->gridSize, this->gridSize));
+	this->selector.setOutlineThickness(2.f);
+	this->selector.setFillColor(sf::Color::Transparent);
+
 	this->view.setViewport(sf::FloatRect(x / window->getSize().x, y / window->getSize().y, width / window->getSize().x, height / window->getSize().y));
 
 	this->view.reset(this->position);
@@ -362,18 +368,10 @@ gui::ScrollingView::ScrollingView(sf::RenderWindow* window, float x, float y, fl
 	this->background.setOutlineColor(outlineColor);
 }
 
-gui::ScrollingView::~ScrollingView()
+gui::TextureSelector::~TextureSelector()
 {
 	if (!this->shapes.empty())
 		for (auto& i : this->shapes)
-			delete i.second;
-
-	if (!this->texts.empty())
-		for (auto& i : this->texts)
-			delete i.second;
-
-	if (!this->buttons.empty())
-		for (auto& i : this->buttons)
 			delete i.second;
 }
 // #### Constructor | Destructor #### //
@@ -386,9 +384,46 @@ gui::ScrollingView::~ScrollingView()
 
 // #### Accessors #### //
 
-// #### Functions #### //
-void gui::ScrollingView::update(const sf::Vector2f& mousePos, const float& dt)
+void gui::TextureSelector::updateState(const sf::Vector2f& mousePos)
 {
+	this->mousePosGrid = sf::Vector2u(
+		static_cast<unsigned>(mousePos.x) / static_cast<unsigned>(this->gridSize),
+		static_cast<unsigned>(mousePos.y) / static_cast<unsigned>(this->gridSize)
+	);
+
+	this->state = IDLE;	// Idle
+
+	if (this->background.getGlobalBounds().contains(mousePos))	// Hover
+	{
+		this->state = HOVER;
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))	// Active
+		{
+			this->state = ACTIVE;
+		}
+	}
+
+	switch (this->state)
+	{
+	case IDLE:
+		this->selector.setOutlineColor(sf::Color::Transparent);
+		break;
+	case HOVER || ACTIVE:
+		this->selector.setOutlineColor(sf::Color::Blue);
+		this->selector.setPosition(this->mousePosGrid.x * this->gridSize, this->mousePosGrid.y * this->gridSize);
+
+
+		std::cout << "X: " << this->mousePosGrid.x << std::endl;
+		std::cout << "Y: " << this->mousePosGrid.y << std::endl;
+		break;
+	}
+}
+
+// #### Functions #### //
+void gui::TextureSelector::update(const sf::Vector2f& mousePos, const float& dt)
+{
+	this->updateState(mousePos);
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		this->position.top -= 10;
@@ -401,20 +436,21 @@ void gui::ScrollingView::update(const sf::Vector2f& mousePos, const float& dt)
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 			this->position.top += 20;
 	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		this->position.top += 10;*/
 
-	if (this->position.top <= this->background.getGlobalBounds().top)
+	if (this->position.top < this->background.getGlobalBounds().top)
 		this->position.top = this->background.getGlobalBounds().top;
 
 	if (this->shapes["MAIN"])
-		if (this->position.top >= this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y)
+		if (this->position.top > this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y)
 			this->position.top = this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y;
-
-	std::cout << this->shapes["MAIN"]->getTexture()->getSize().y << std::endl;
 }
 
-void gui::ScrollingView::render(sf::RenderTarget& target)
+void gui::TextureSelector::renderSelector(sf::RenderTarget& target)
+{
+	target.draw(this->selector);
+}
+
+void gui::TextureSelector::render(sf::RenderTarget& target)
 {
 	target.draw(this->background);
 	target.setView(this->view);
@@ -423,19 +459,9 @@ void gui::ScrollingView::render(sf::RenderTarget& target)
 	if (!this->shapes.empty())
 		for (auto& i : this->shapes)
 			target.draw(*i.second);
-
-	if (!this->texts.empty())
-		for (auto& i : this->texts)
-			i.second->render(target);
-
-	if (!this->buttons.empty())
-		for (auto& i : this->buttons)
-			i.second->render(target);
 	/* #### Render objects #### */
 
-	if (this->shapes["MAIN"])
-		if (this->position.top >= this->shapes["MAIN"]->getGlobalBounds().height)
-			this->position.top = this->shapes["MAIN"]->getGlobalBounds().height;
+	this->renderSelector(target);
 
 	this->view.reset(this->position);
 	target.setView(target.getDefaultView());
