@@ -1,0 +1,160 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Tiled/MainMap.json",
+    "expandedProjectPaths": [
+        "Tiled/tiles",
+        "Tiled"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "Tiled/Decorations.tsj": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Tiled/Grounds.tsj": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Tiled/MainMap.json": {
+            "scale": 0.25,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1708,
+                "y": 1002
+            }
+        },
+        "Tiled/MainMap.tmj": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 2030.5,
+                "y": 1090
+            }
+        },
+        "Tiled/MainMap.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1516.6666666666667,
+                "y": 877.2727272727273
+            }
+        },
+        "Tiled/MainMap.tmx#tiles1": {
+            "dynamicWrapping": true,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles1.tsj": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles10.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles11.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles12.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles13.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles14.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles15.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles16.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles17.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles2.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles3.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles4.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles5.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles6.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles7.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles8.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles/tiles9.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled/tiles1.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "D:/Users/Theo6/source/repos/SFML - Proj5/SFML - Proj5/Resources/Tiled",
+    "last.imagePath": "D:/Users/Theo6/source/repos/SFML - Proj5/SFML - Proj5/Resources/Images/Tiles",
+    "map.fixedSize": true,
+    "map.height": 68,
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.width": 120,
+    "openFiles": [
+        "Tiled/MainMap.json",
+        "Tiled/tiles/tiles1.tsj",
+        "Tiled/tiles/tiles2.tsj"
+    ],
+    "project": "mainMap.tiled-project",
+    "property.type": "file",
+    "recentFiles": [
+        "Tiled/tiles/tiles2.tsj",
+        "Tiled/tiles/tiles1.tsj",
+        "Tiled/MainMap.json",
+        "Tiled/MainMap.tmx",
+        "Tiled/Grounds.tsj",
+        "Tiled/Decorations.tsj",
+        "Tiled/tiles/tiles17.tsj",
+        "Tiled/tiles/tiles16.tsj",
+        "Tiled/tiles/tiles15.tsj",
+        "Tiled/tiles/tiles14.tsj",
+        "Tiled/tiles/tiles13.tsj",
+        "Tiled/tiles/tiles12.tsj"
+    ],
+    "tileset.embedInMap": false,
+    "tileset.lastUsedFormat": "json",
+    "tileset.transparentColor": "#b1bfc3",
+    "tileset.type": 0,
+    "tileset.useTransparentColor": false
+}

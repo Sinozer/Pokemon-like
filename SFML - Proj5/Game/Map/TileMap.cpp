@@ -83,16 +83,16 @@ void TileMap::decreaseTextureSet()
 // #### Modifiers #### //
 
 // #### Functions #### //
-void TileMap::addTile(const unsigned x, const unsigned y, const unsigned z, const sf::IntRect& textureRect)
-{
-	if (x >= 0 && x < this->maxSize.x
-		&& y >= 0 && y < this->maxSize.y
-		&& z >= 0 && z < this->layers) // Prevents out of bounds
-	{
-		if (this->map[x][y][z] == nullptr) // Check if tile is empty
-			this->map[x][y][z] = new Tile(x * this->gridSizeF, y * this->gridSizeF, this->gridSizeF, *this->selectedSheet, textureRect);
-	}
-}
+//void TileMap::addTile(const unsigned x, const unsigned y, const unsigned z, const sf::IntRect& textureRect)
+//{
+//	if (x >= 0 && x < this->maxSize.x
+//		&& y >= 0 && y < this->maxSize.y
+//		&& z >= 0 && z < this->layers) // Prevents out of bounds
+//	{
+//		if (this->map[x][y][z] == nullptr) // Check if tile is empty
+//			this->map[x][y][z] = new Tile(x, y, this->gridSizeF, *this->selectedSheet, textureRect);
+//	}
+//}
 
 void TileMap::removeTile(const unsigned x, const unsigned y, const unsigned z)
 {

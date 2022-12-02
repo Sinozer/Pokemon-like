@@ -2,6 +2,7 @@
 #include "Game/Entity/Components/MovementComponent.h"
 #include "Game/Entity/Components/HitboxComponent.h"
 #include "Game/Entity/Components/AnimationComponent.h"
+#include "Game/Entity/Components/CombatComponent.h"
 
 class Entity
 {
@@ -20,6 +21,7 @@ protected:
 	MovementComponent* movementComponent;
 	HitboxComponent* hitboxComponent;
 	AnimationComponent* animationComponent;
+	CombatComponent* combatComponent;
 	// #### Variables #### //
 public:
 	// #### Constructor | Destructor #### //
@@ -32,7 +34,16 @@ public:
 	void createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration);
 	void createHitboxComponent(float offsetX, float offsetY, float width, float height);
 	void createAnimationComponent();
+	void createCombatComponent();
 	// #### Component Functions #### //
+
+	// #### Accessors #### //
+	virtual const sf::Vector2f getPosition() const;
+	virtual const sf::RectangleShape& getHitbox() const;
+	virtual MovementComponent* getMovementComponent();
+	virtual sf::Vector2f& getVelocity();
+	virtual CombatComponent* getCombatComponent();
+	// #### Accessors #### //
 
 	// #### Functions #### //
 	virtual void setPosition(const float x, const float y);

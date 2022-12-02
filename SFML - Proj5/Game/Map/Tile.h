@@ -9,12 +9,12 @@ protected:
 public:
 	// #### Constructor | Destructor #### //
 	Tile();
-	Tile(float x, float y, float gridSizeF, const sf::Texture& texture, const sf::IntRect& textureRect);		// Class constructor
+	Tile(float x, float y, float gridSizeF, sf::Texture* texture, const sf::IntRect& textureRect);		// Class constructor
 	virtual ~Tile();	// Class destructor
 	// #### Constructor | Destructor #### //
 
 	// #### Accessors #### //
-
+	const sf::RectangleShape& getShape() const;
 	// #### Accessors #### //
 
 	// #### Modifiers #### //

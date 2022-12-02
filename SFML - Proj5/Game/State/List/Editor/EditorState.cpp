@@ -109,7 +109,7 @@ void EditorState::updateEditorInput(const float& dt)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->getKeyTime())	// When left click
 	{
-		this->tileMap->addTile(this->mousePosGrid.x, this->mousePosGrid.y, 0, this->textureRect); // Add tile
+		//this->tileMap->addTile(this->mousePosGrid.x, this->mousePosGrid.y, 0, this->textureRect); // Add tile
 	}
 	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && this->getKeyTime())	// When left click
 	{
@@ -145,9 +145,11 @@ void EditorState::updateEditorInput(const float& dt)
 
 void EditorState::updateGui(const float& dt)
 {
-	this->cursorText.setPosition(this->mousePosView.x + 30.f, this->mousePosView.y);
+	if (this->scrollingViews["TEXTURES_SET"]->getState() == gui::HOVER)
+		this->cursorText.setPosition(this->mousePosView.x + 30.f, this->mousePosView.y);
+
 	std::stringstream ss;
-	ss << "X: " << this->mousePosGrid.x << " " << "Y: " << this->mousePosGrid.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
+	ss << "X: " << this->mousePosGrid.x << " Y: " << this->mousePosGrid.y << "\ntX: " << this->textureRect.left << " tY: " << this->textureRect.top;
 	this->cursorText.setString(ss.str());
 
 	if (this->mousePosGrid.x * this->stateData->gridSize < this->stateData->window->getSize().x

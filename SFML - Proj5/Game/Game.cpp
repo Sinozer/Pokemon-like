@@ -24,7 +24,7 @@ void Game::initWindow()
 		this->window = new sf::RenderWindow(this->gfxSettings.resolution, this->gfxSettings.title, sf::Style::Fullscreen, this->gfxSettings.contextSettings);
 	else
 		this->window = new sf::RenderWindow(this->gfxSettings.resolution, this->gfxSettings.title, sf::Style::Titlebar | sf::Style::Close, this->gfxSettings.contextSettings);
-	
+
 	this->window->setFramerateLimit(this->gfxSettings.framerateLimit);
 	this->window->setVerticalSyncEnabled(this->gfxSettings.verticalSync);
 }
@@ -64,8 +64,8 @@ void Game::initStateData()
 	this->stateData.sfEvent = &this->sfEvent;
 	this->stateData.dt = &this->dt;
 
-	this->cursor.loadFromSystem(sf::Cursor::Hand);
-	this->window->setMouseCursor(this->cursor);
+	//this->cursor.loadFromSystem(sf::Cursor::Hand);
+	//this->window->setMouseCursor(this->cursor);
 }
 
 void Game::initStates()

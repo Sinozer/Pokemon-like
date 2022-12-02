@@ -24,7 +24,8 @@ public:
 	virtual ~HitboxComponent();
 	// #### Constructor | Destructor #### //
 
-
+	// #### Accessors #### //
+	const sf::RectangleShape& getHitbox() const;
 	// #### Accessors #### //
 
 	// #### Functions #### //

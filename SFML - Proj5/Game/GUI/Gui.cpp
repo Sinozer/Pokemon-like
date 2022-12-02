@@ -381,7 +381,10 @@ gui::TextureSelector::~TextureSelector()
 // #### Modifiers #### //
 
 // #### Accessors #### //
-
+short unsigned int gui::TextureSelector::getState()
+{
+	return this->state;
+}
 // #### Accessors #### //
 
 void gui::TextureSelector::updateState(const sf::Vector2f& mousePos)
@@ -390,6 +393,12 @@ void gui::TextureSelector::updateState(const sf::Vector2f& mousePos)
 		static_cast<unsigned>(mousePos.x) / static_cast<unsigned>(this->gridSize),
 		static_cast<unsigned>(mousePos.y) / static_cast<unsigned>(this->gridSize)
 	);
+
+	//std::cout << "LEFT: " << this->position.left << std::endl;
+	//std::cout << "TOP: " << this->position.top << std::endl;
+	//std::cout << "X: " << this->position.top / this->gridSize << std::endl;
+	//std::cout << "Y: " << this->shapes["MAIN"]->getTexture()->getSize().y << std::endl;
+
 
 	this->state = IDLE;	// Idle
 
@@ -410,11 +419,7 @@ void gui::TextureSelector::updateState(const sf::Vector2f& mousePos)
 		break;
 	case HOVER || ACTIVE:
 		this->selector.setOutlineColor(sf::Color::Blue);
-		this->selector.setPosition(this->mousePosGrid.x * this->gridSize, this->mousePosGrid.y * this->gridSize);
-
-
-		std::cout << "X: " << this->mousePosGrid.x << std::endl;
-		std::cout << "Y: " << this->mousePosGrid.y << std::endl;
+		this->selector.setPosition((this->mousePosGrid.x + round(this->position.left / this->gridSize) - 1) * this->gridSize, (this->mousePosGrid.y + round(this->position.top / this->gridSize) - 1) * this->gridSize);
 		break;
 	}
 }
@@ -438,7 +443,7 @@ void gui::TextureSelector::update(const sf::Vector2f& mousePos, const float& dt)
 	}
 
 	if (this->position.top < this->background.getGlobalBounds().top)
-		this->position.top = this->background.getGlobalBounds().top;
+		this->position.top = this->background.getGlobalBounds().top + 1;
 
 	if (this->shapes["MAIN"])
 		if (this->position.top > this->shapes["MAIN"]->getTexture()->getSize().y * this->shapes["MAIN"]->getScale().y - this->position.height + this->background.getPosition().y)

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/State/List/MainMenu/MainMenuState.h"
+#include "MainMenuState.h"
 
 // #### Init Functions #### //
 void MainMenuState::initVariables()
@@ -151,7 +151,7 @@ void MainMenuState::render(sf::RenderTarget* target)
 	this->renderButtons(*target);
 
 	// #### DEBUG #### //
-	sf::Text mouseText;
+	/*sf::Text mouseText;
 	mouseText.setPosition(this->mousePosView.x + 10, this->mousePosView.y + 10);
 	mouseText.setFont(this->font);
 	mouseText.setCharacterSize(22);
@@ -160,7 +160,7 @@ void MainMenuState::render(sf::RenderTarget* target)
 	ss << "X: " << this->mousePosView.x << " " << "Y: " << this->mousePosView.y;
 	mouseText.setString(ss.str());
 
-	target->draw(mouseText);
+	target->draw(mouseText);*/
 	// #### DEBUG #### //
 }
 // #### Functions #### //

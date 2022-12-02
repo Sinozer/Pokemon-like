@@ -8,8 +8,8 @@ HitboxComponent::HitboxComponent(sf::Sprite& sprite, float offsetX, float offset
 	this->hitbox.setPosition(this->sprite.getPosition().x + offsetX, this->sprite.getPosition().y + offsetY);
 	this->hitbox.setSize(sf::Vector2f(width, height));
 	this->hitbox.setFillColor(sf::Color::Transparent);
-	this->hitbox.setOutlineThickness(1.f);
-	this->hitbox.setOutlineColor(sf::Color::Green);
+	//this->hitbox.setOutlineThickness(1.f);
+	//this->hitbox.setOutlineColor(sf::Color::Green);
 }
 
 HitboxComponent::~HitboxComponent()
@@ -19,7 +19,10 @@ HitboxComponent::~HitboxComponent()
 // #### Constructor | Destructor #### //
 
 // #### Accessors #### //
-
+const sf::RectangleShape& HitboxComponent::getHitbox() const
+{
+	return this->hitbox;
+}
 // #### Accessors #### //
 
 // #### Functions #### //

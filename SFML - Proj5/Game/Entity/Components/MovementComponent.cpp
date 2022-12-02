@@ -16,7 +16,7 @@ MovementComponent::~MovementComponent()
 // #### Constructor | Destructor #### //
 
 // #### Accessors #### //
-const sf::Vector2f& MovementComponent::getVelocity() const
+sf::Vector2f& MovementComponent::getVelocity()
 {
 	return this->velocity;
 }

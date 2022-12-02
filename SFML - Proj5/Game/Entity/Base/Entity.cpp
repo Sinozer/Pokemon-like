@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/Entity/Base/Entity.h"
+#include "Entity.h"
 
 // #### PRIVATE #### //
 
@@ -8,6 +8,8 @@ void Entity::initVariables()
 {
 	this->movementComponent = nullptr;
 	this->hitboxComponent = nullptr;
+	this->animationComponent = nullptr;
+	this->combatComponent = nullptr;
 }
 // #### Init Functions #### //
 
@@ -21,9 +23,14 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-	delete this->movementComponent;
-	delete this->hitboxComponent;
-	delete this->animationComponent;
+	if (this->movementComponent)
+		delete this->movementComponent;
+	if (this->hitboxComponent)
+		delete this->hitboxComponent;
+	if (this->animationComponent)
+		delete this->animationComponent;
+	if (this->combatComponent)
+		delete this->combatComponent;
 }
 // #### Constructor | Destructor #### //
 
@@ -47,7 +54,36 @@ void Entity::createAnimationComponent()
 {
 	this->animationComponent = new AnimationComponent(this->sprite);
 }
+
+void Entity::createCombatComponent()
+{
+	this->combatComponent = new CombatComponent();
+}
 // #### Component Functions #### //
+
+// #### Accessors #### //
+const sf::Vector2f Entity::getPosition() const
+{
+	return this->sprite.getPosition();
+}
+
+const sf::RectangleShape& Entity::getHitbox() const
+{
+	return this->hitboxComponent->getHitbox();
+}
+MovementComponent* Entity::getMovementComponent()
+{
+	return this->movementComponent;
+}
+sf::Vector2f& Entity::getVelocity()
+{
+	return this->movementComponent->getVelocity();
+}
+CombatComponent* Entity::getCombatComponent()
+{
+	return this->combatComponent;
+}
+// #### Accessors #### //
 
 // #### Functions #### //
 void Entity::setPosition(const float x, const float y)
@@ -70,5 +106,8 @@ void Entity::render(sf::RenderTarget& target)
 
 	if (this->hitboxComponent)
 		this->hitboxComponent->render(target);
+
+	if (this->combatComponent)
+		this->combatComponent->render(target);
 }
 // #### Functions #### //

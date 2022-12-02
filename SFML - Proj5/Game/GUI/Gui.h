@@ -265,7 +265,7 @@ namespace gui
 		// #### Modifiers #### //
 
 		// #### Accessors #### //
-		
+		short unsigned int getState();
 		// #### Accessors #### //
 
 		// #### Functions #### //

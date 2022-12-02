@@ -6,12 +6,13 @@ Tile::Tile()
 }
 
 // #### Constructor | Destructor #### //
-Tile::Tile(float x, float y, float gridSizeF, const sf::Texture& texture, const sf::IntRect& textureRect)
+Tile::Tile(float x, float y, float gridSizeF, sf::Texture* texture, const sf::IntRect& textureRect)
 {
 	this->shape.setSize(sf::Vector2f(gridSizeF, gridSizeF));
-	//this->shape.setFillColor(sf::Color::Blue);
-	this->shape.setPosition(x, y);
-	this->shape.setTexture(&texture);
+	//this->shape.setOutlineThickness(1.f);
+	//this->shape.setOutlineColor(sf::Color::Black);
+	this->shape.setPosition(x * gridSizeF, y * gridSizeF);
+	this->shape.setTexture(texture);
 	this->shape.setTextureRect(textureRect);
 }
 
@@ -21,7 +22,10 @@ Tile::~Tile()
 // #### Constructor | Destructor #### //
 
 // #### Accessors #### //
-
+const sf::RectangleShape& Tile::getShape() const
+{
+	return this->shape;
+}
 // #### Accessors #### //
 
 // #### Modifiers #### //

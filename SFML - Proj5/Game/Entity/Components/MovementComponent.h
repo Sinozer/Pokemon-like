@@ -21,7 +21,7 @@ public:
 	// #### Constructor | Destructor #### //
 
 	// #### Accessors #### //
-	const sf::Vector2f& getVelocity() const;
+	sf::Vector2f& getVelocity();
 	// #### Accessors #### //
 
 	// #### Functions #### //

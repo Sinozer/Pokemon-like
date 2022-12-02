@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Game/Entity/List/Player/Player.h"
+#include "Player.h"
 
 // #### PRIVATE ####//
 // #### Init Functions #### //
@@ -10,8 +10,8 @@ void Player::initVariables()
 
 void Player::initComponents(sf::Texture& textureSet)
 {
-	this->createMovementComponent(240.f, 2400.f, 1200.f);
-	this->createHitboxComponent(50.f, 100.f, 55.f, 55.f);
+	this->createMovementComponent(240.f, 4800.f, 1200.f);
+	this->createHitboxComponent(16, 32, 55.f, 55.f);
 	this->createAnimationComponent();
 	this->sprite.scale(sf::Vector2f(4.f, 4.f));
 
@@ -19,6 +19,8 @@ void Player::initComponents(sf::Texture& textureSet)
 	this->animationComponent->addAnimation("MOVING_LEFT", 15.f, 2, 0, true, sf::IntRect(5, 32, 21, 26));
 	this->animationComponent->addAnimation("MOVING_UP", 15.f, 2, 0, true, sf::IntRect(6, 59, 20, 30));
 	this->animationComponent->addAnimation("MOVING_RIGHT", 15.f, 2, 0, true, sf::IntRect(3, 88, 21, 30));
+
+	this->createCombatComponent();
 }
 // #### Init Functions #### //
 // #### PRIVATE ####//
@@ -27,7 +29,7 @@ void Player::initComponents(sf::Texture& textureSet)
 Player::Player(float x, float y, sf::Texture& textureSet)
 {
 	this->initVariables();
-	
+
 	this->setTexture(textureSet);
 	this->setPosition(x, y);
 
@@ -43,24 +45,25 @@ Player::~Player()
 // #### Funtions #### //
 void Player::update(const float& dt)
 {
-	this->movementComponent->update(dt);
-	if (this->movementComponent->getState(MOVING_DOWN))
+	if (this->movementComponent && this->animationComponent)
 	{
-		this->animationComponent->play("MOVING_DOWN", dt);
-	}
-	else if (this->movementComponent->getState(MOVING_LEFT))
-	{
-		this->animationComponent->play("MOVING_LEFT", dt);
-		//this->sprite.setOrigin(0.f, 0.f);
-		//this->sprite.setScale(1.f, 1.f);
-	}
-	else if (this->movementComponent->getState(MOVING_UP))
-	{
-		this->animationComponent->play("MOVING_UP", dt);
-	}
-	else if (this->movementComponent->getState(MOVING_RIGHT))
-	{
-		this->animationComponent->play("MOVING_RIGHT", dt);
+		this->movementComponent->update(dt);
+		if (this->movementComponent->getState(MOVING_DOWN))
+		{
+			this->animationComponent->play("MOVING_DOWN", dt);
+		}
+		else if (this->movementComponent->getState(MOVING_LEFT))
+		{
+			this->animationComponent->play("MOVING_LEFT", dt);
+		}
+		else if (this->movementComponent->getState(MOVING_UP))
+		{
+			this->animationComponent->play("MOVING_UP", dt);
+		}
+		else if (this->movementComponent->getState(MOVING_RIGHT))
+		{
+			this->animationComponent->play("MOVING_RIGHT", dt);
+		}
 	}
 
 	this->hitboxComponent->update();

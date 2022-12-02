@@ -118,17 +118,11 @@
     <Filter Include="Fichiers d%27en-tête\Game\Entity\Base">
       <UniqueIdentifier>{32f7abdc-55b1-4451-abcf-c8de4e1d665c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game\Entity\Base\Components">
-      <UniqueIdentifier>{05c0bb87-9a72-4a20-93f7-964bcaa48719}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Game\Entity\List">
       <UniqueIdentifier>{feab28c2-1beb-4cce-85a6-9b89e9b8ea69}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Game\Entity\List\Player">
       <UniqueIdentifier>{627f2991-c79b-48eb-8e45-13312ba7fad1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Game\Entity\Base\Components">
-      <UniqueIdentifier>{e31599c5-2f5e-4343-b28b-3df1a8392e22}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Game\State\List\Game\Menus">
       <UniqueIdentifier>{535106c5-ac4c-42e9-8cd0-9b394b2f8139}</UniqueIdentifier>
@@ -145,6 +139,30 @@
     <Filter Include="Fichiers d%27en-tête\Game\Data">
       <UniqueIdentifier>{67525b43-aa15-4973-945d-8b8aee6f7a5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Pokemon">
+      <UniqueIdentifier>{053497ad-7b4a-42e0-8742-5660b41657b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Components">
+      <UniqueIdentifier>{05c0bb87-9a72-4a20-93f7-964bcaa48719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Components">
+      <UniqueIdentifier>{e31599c5-2f5e-4343-b28b-3df1a8392e22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Pokemon">
+      <UniqueIdentifier>{e1da406c-60d6-4cb4-a2bd-e85fe0a88cb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Pokemon\Base">
+      <UniqueIdentifier>{e1921574-8a7e-4c9e-af16-2711b7151682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Pokemon\Base">
+      <UniqueIdentifier>{8371ecd7-1297-4b19-ba42-1a0d6dc87d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\Entity\Pokemon\Manager">
+      <UniqueIdentifier>{d6b5f0fd-b08d-4c44-992f-d7c43d5db268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\Entity\Pokemon\Manager">
+      <UniqueIdentifier>{1ad47534-0e4e-4c49-951a-c9372228d9f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -154,13 +172,13 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Components\AnimationComponent.cpp">
-      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers sources\Game\Entity\Components</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Components\HitboxComponent.cpp">
-      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers sources\Game\Entity\Components</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Components\MovementComponent.cpp">
-      <Filter>Fichiers sources\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers sources\Game\Entity\Components</Filter>
     </ClCompile>
     <ClCompile Include="Game\Entity\Base\Entity.cpp">
       <Filter>Fichiers sources\Game\Entity\Base</Filter>
@@ -213,19 +231,37 @@
     <ClCompile Include="Game\Data\DataManager.cpp">
       <Filter>Fichiers sources\Game\Data</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Map\Map.cpp">
+      <Filter>Fichiers sources\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Layer.cpp">
+      <Filter>Fichiers sources\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Pokemon\Base\Pokemon.cpp">
+      <Filter>Fichiers sources\Game\Entity\Pokemon\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Pokemon\Manager\PokemonManager.cpp">
+      <Filter>Fichiers sources\Game\Entity\Pokemon\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\State\List\Game\Menus\GameCombatMenu.cpp">
+      <Filter>Fichiers sources\Game\State\List\Game\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Components\CombatComponent.cpp">
+      <Filter>Fichiers sources\Game\Entity\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Components\AnimationComponent.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Components</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Components\HitboxComponent.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Components</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Components\MovementComponent.h">
-      <Filter>Fichiers d%27en-tête\Game\Entity\Base\Components</Filter>
+      <Filter>Fichiers d%27en-tête\Game\Entity\Components</Filter>
     </ClInclude>
     <ClInclude Include="Game\Entity\Base\Entity.h">
       <Filter>Fichiers d%27en-tête\Game\Entity\Base</Filter>
@@ -277,6 +313,24 @@
     </ClInclude>
     <ClInclude Include="Game\Data\DataManager.h">
       <Filter>Fichiers d%27en-tête\Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\Map.h">
+      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map\Layer.h">
+      <Filter>Fichiers d%27en-tête\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Pokemon\Base\Pokemon.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Pokemon\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Pokemon\Manager\PokemonManager.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Pokemon\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Components\CombatComponent.h">
+      <Filter>Fichiers d%27en-tête\Game\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\State\List\Game\Menus\GameCombatMenu.h">
+      <Filter>Fichiers d%27en-tête\Game\State\List\Game\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
